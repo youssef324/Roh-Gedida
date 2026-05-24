@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حالات دراسية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            direction: rtl;
+        }
+
+        .logo-small {
+            position: fixed;
+            top: 4px;
+            left: 4px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to br, #3b82f6, #8b5cf6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 50;
+        }
+
+        .logo-small:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ff006e, #ffbe0b, #8338ec, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .case-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .case-button {
+            background: linear-gradient(to right, var(--btn-color-1), var(--btn-color-2));
+            transition: all 0.3s ease;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .case-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .case-button:active {
+            transform: translateY(-1px);
+        }
+
+        .case-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 0;
+        }
+
+        .case-content.active {
+            max-height: 1000px;
+            margin-top: 15px;
+        }
+
+        .case-content p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen p-4">
+
+    <!-- Logo Top Left -->
+    <a href="index.html" class="logo-small">
+        <span class="text-3xl">✨</span>
+    </a>
+
+    <div class="max-w-3xl mx-auto mt-20">
+        <!-- Title -->
+        <div class="text-center mb-12">
+            <h1 class="gradient-text text-5xl md:text-6xl font-black tracking-tighter mb-6">
+                حالات دراسية
+            </h1>
+            <div class="h-2 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Case Studies -->
+        <div class="space-y-6 mb-12">
+
+            <!-- Case 1 -->
+            <div class="case-card">
+                <button class="case-button" style="--btn-color-1: #3b82f6; --btn-color-2: #1d4ed8;" onclick="toggleCase(this)">
+                    📖 الحالة الأولى: الإيمان والعمل
+                </button>
+                <div class="case-content">
+                    <p>
+                        🔹 <strong>المشكلة:</strong> شاب صادق في إيمانه لكنه لم يتخذ أي خطوات عملية نحو حلم يهدف إليه. كان يصلي ويدعو لكن لم يعمل بجد.
+                    </p>
+                    <p>
+                        🔹 <strong>الحل:</strong> أدرك أن الإيمان والعمل يجب أن يسيران معاً. بدأ يعمل بجدية أثناء توكله على الله. النتيجة كانت نجاحاً ملموساً في دراسته وحياته المهنية.
+                    </p>
+                    <p>
+                        💡 <strong>الدرس:</strong> "الإيمان بدون عمل ميت" - لا تنتظر المعجزات وأنت جالس، اعمل وادعُ.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+                <button class="case-button" style="--btn-color-1: #a855f7; --btn-color-2: #6d28d9;" onclick="toggleCase(this)">
+                    💪 الحالة الثانية: التغلب على الضعف
+                </button>
+                <div class="case-content">
+                    <p>
+                        🔹 <strong>المشكلة:</strong> فتاة تعاني من عدم الثقة بالنفس، قالت لنفسها أنها ضعيفة وغير قادرة على تحقيق أحلامها. كانت تستسلم بسهولة عند أول عقبة.
+                    </p>
+                    <p>
+                        🔹 <strong>الحل:</strong> بدأت تقرأ عن قصص نجاح أشخاص واجهوا نفس التحديات. بدأت بخطوات صغيرة وتحدت نفسها يومياً. مع الوقت أصبحت أقوى وأكثر عزماً.
+                    </p>
+                    <p>
+                        💡 <strong>الدرس:</strong> قوتك تأتي من إصرارك على المحاولة. لا تقيّم نفسك بأخطائك، بل بقدرتك على النهوض من جديد.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+                <button class="case-button" style="--btn-color-1: #ec4899; --btn-color-2: #be185d;" onclick="toggleCase(this)">
+                    🤝 الحالة الثالثة: قوة المجتمع
+                </button>
+                <div class="case-content">
+                    <p>
+                        🔹 <strong>المشكلة:</strong> رجل شعر بالوحدة والاكتئاب. انعزل عن الناس معتقداً أنه لا أحد يفهمه. ظل يعاني بمفرده في صمت.
+                    </p>
+                    <p>
+                        🔹 <strong>الحل:</strong> قرر أن ينضم لمجموعة روحية صغيرة. شارك أحزانه وآماله مع أشخاص يفهمون. وجد الدعم والفهم الذي كان يحتاجه. بدأ يشعر بالأمل من جديد.
+                    </p>
+                    <p>
+                        💡 <strong>الدرس:</strong> لا تحاول أن تحمل الحمل وحدك. الحياة أسهل عندما تشاركها مع أشخاص يدعمونك. البحث عن المجتمع ليس ضعفاً، بل قوة.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-green-600 to-green-800 px-8 py-3 rounded-2xl font-bold hover:scale-105 transition">
+                ← العودة للرئيسية
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleCase(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+            
+            // Smooth scroll to content
+            if (content.classList.contains('active')) {
+                setTimeout(() => {
+                    content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+    </script>
+
+</body>
+</html>

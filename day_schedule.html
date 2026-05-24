@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول اليوم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            direction: rtl;
+        }
+
+        .logo-small {
+            position: fixed;
+            top: 4px;
+            left: 4px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to br, #3b82f6, #8b5cf6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 50;
+        }
+
+        .logo-small:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ff006e, #ffbe0b, #8338ec, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        table {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+            font-weight: bold;
+            color: #fff;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen p-4">
+
+    <!-- Logo Top Left -->
+    <img src="logo.jpg" alt="Logo" class="fixed top-4 left-4 w-15 h-15 logo-small">
+
+    <div class="max-w-3xl mx-auto mt-20">
+        <!-- Title -->
+        <div class="text-center mb-12">
+            <h1 class="gradient-text text-5xl md:text-6xl font-black tracking-tighter mb-6">
+                جدول اليوم
+            </h1>
+            <div class="h-2 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-3xl shadow-2xl">
+            <table>
+                <thead>
+                    <tr>
+                        <th>النشاط</th>
+                        <th>الوقت</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🙏 الصلاة والتأمل</td>
+                        <td>6:00 - 7:00</td>
+                        
+                    </tr>
+                    <tr>
+                            <td>📖 قراءة الكتاب المقدس</td>
+                            <td>7:00 - 8:00</td>
+                    </tr>
+                    <tr>
+                        <td>🍽️ الإفطار</td>
+                        <td>8:00 - 9:00</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>💼 العمل والدراسة</td>
+                        <td>9:00 - 12:00</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>🍽️ الغداء</td>
+                         <td>12:00 - 1:00</td>
+                       
+                    </tr>
+                    <tr>
+                           <td>⏸️ الراحة</td>
+                           <td>1:00 - 3:00</td>
+                     
+                    </tr>
+                    <tr>
+                        <td>📚 الدراسة والعمل</td>
+                        <td>3:00 - 6:00</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>🎵 الترنيم والعبادة</td>
+                        <td>6:00 - 7:00</td>
+                        
+                    </tr>
+                    <tr>
+                           <td>🍽️ العشاء</td>
+                           <td>7:00 - 8:00</td>
+                     
+                    </tr>
+                    <tr>
+                        <td>😴 النوم والراحة</td>
+                        <td>8:00+</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-10">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-3 rounded-2xl font-bold hover:scale-105 transition">
+               HOME  ← 
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
