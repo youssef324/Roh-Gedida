@@ -1,198 +1,495 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
     <title>حالات دراسية</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Segoe UI", Tahoma, sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            direction: rtl;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
         }
 
         .logo-small {
             position: fixed;
-            top: 4px;
-            left: 4px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to br, #3b82f6, #8b5cf6);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 50;
-        }
-
-        .logo-small:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            top: 12px;
+            left: 12px;
+            width: 58px;
+            height: 58px;
+            object-fit: cover;
+            border-radius: 18px;
+            z-index: 999;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
         }
 
         .gradient-text {
-            background: linear-gradient(45deg, #ff006e, #ffbe0b, #8338ec, #3a86ff);
+            background: linear-gradient(45deg,
+                    #ff006e,
+                    #ffbe0b,
+                    #8338ec,
+                    #3a86ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .case-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 25px;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 28px;
+            padding: 18px;
+            transition: .3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
         }
 
-        .case-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        .case-card:active {
+            transform: scale(.985);
         }
 
         .case-button {
-            background: linear-gradient(to right, var(--btn-color-1), var(--btn-color-2));
-            transition: all 0.3s ease;
-            font-weight: bold;
-            padding: 12px 30px;
-            border-radius: 15px;
-            cursor: pointer;
+            background: linear-gradient(to right,
+                    var(--btn-color-1),
+                    var(--btn-color-2));
+            width: 100%;
             border: none;
+            padding: 16px;
+            border-radius: 22px;
             color: white;
             font-size: 1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .case-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            filter: brightness(1.1);
+            font-weight: 800;
+            line-height: 1.8;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
         }
 
         .case-button:active {
-            transform: translateY(-1px);
+            transform: scale(.97);
         }
 
         .case-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
-            margin-top: 0;
+            transition: max-height .5s ease;
         }
 
         .case-content.active {
-            max-height: 1000px;
-            margin-top: 15px;
+            max-height: 5000px;
+            margin-top: 20px;
         }
 
         .case-content p {
-            line-height: 1.8;
-            font-size: 1.05rem;
+            line-height: 2.1;
+            font-size: 1rem;
+            color: #f3f4f6;
+            margin-bottom: 18px;
+        }
+
+        .quote-box {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            padding: 16px;
+            border-radius: 22px;
+            line-height: 2;
+            margin-bottom: 18px;
+            color: #e5e7eb;
+        }
+
+        .blob {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: .22;
+            z-index: -1;
+        }
+
+        .blob1 {
+            background: #3b82f6;
+            top: -50px;
+            left: -50px;
+        }
+
+        .blob2 {
+            background: #ec4899;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        @media (max-width:390px) {
+            .gradient-text {
+                font-size: 2.4rem !important;
+            }
+
+            .case-content p {
+                font-size: .95rem;
+            }
+
+            .case-button {
+                font-size: .92rem;
+            }
         }
     </style>
 </head>
-<body class="text-white min-h-screen p-4">
 
-    <!-- Logo Top Left -->
-    <a href="index.html" class="logo-small">
-        <span class="text-3xl">✨</span>
-    </a>
+<body class="p-4">
 
-    <div class="max-w-3xl mx-auto mt-20">
-        <!-- Title -->
-        <div class="text-center mb-12">
-            <h1 class="gradient-text text-5xl md:text-6xl font-black tracking-tighter mb-6">
-                حالات دراسية
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <!-- LOGO -->
+    <img src="logo.jpg" alt="logo" class="logo-small">
+
+    <div class="max-w-md mx-auto mt-24 pb-14">
+
+        <!-- TITLE -->
+        <div class="text-center mb-10">
+
+            <h1 class="gradient-text text-5xl font-black mb-5">
+               Case Study
             </h1>
-            <div class="h-2 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto rounded-full"></div>
-        </div>
 
-        <!-- Case Studies -->
-        <div class="space-y-6 mb-12">
-
-            <!-- Case 1 -->
-            <div class="case-card">
-                <button class="case-button" style="--btn-color-1: #3b82f6; --btn-color-2: #1d4ed8;" onclick="toggleCase(this)">
-                    📖 الحالة الأولى: الإيمان والعمل
-                </button>
-                <div class="case-content">
-                    <p>
-                        🔹 <strong>المشكلة:</strong> شاب صادق في إيمانه لكنه لم يتخذ أي خطوات عملية نحو حلم يهدف إليه. كان يصلي ويدعو لكن لم يعمل بجد.
-                    </p>
-                    <p>
-                        🔹 <strong>الحل:</strong> أدرك أن الإيمان والعمل يجب أن يسيران معاً. بدأ يعمل بجدية أثناء توكله على الله. النتيجة كانت نجاحاً ملموساً في دراسته وحياته المهنية.
-                    </p>
-                    <p>
-                        💡 <strong>الدرس:</strong> "الإيمان بدون عمل ميت" - لا تنتظر المعجزات وأنت جالس، اعمل وادعُ.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Case 2 -->
-            <div class="case-card">
-                <button class="case-button" style="--btn-color-1: #a855f7; --btn-color-2: #6d28d9;" onclick="toggleCase(this)">
-                    💪 الحالة الثانية: التغلب على الضعف
-                </button>
-                <div class="case-content">
-                    <p>
-                        🔹 <strong>المشكلة:</strong> فتاة تعاني من عدم الثقة بالنفس، قالت لنفسها أنها ضعيفة وغير قادرة على تحقيق أحلامها. كانت تستسلم بسهولة عند أول عقبة.
-                    </p>
-                    <p>
-                        🔹 <strong>الحل:</strong> بدأت تقرأ عن قصص نجاح أشخاص واجهوا نفس التحديات. بدأت بخطوات صغيرة وتحدت نفسها يومياً. مع الوقت أصبحت أقوى وأكثر عزماً.
-                    </p>
-                    <p>
-                        💡 <strong>الدرس:</strong> قوتك تأتي من إصرارك على المحاولة. لا تقيّم نفسك بأخطائك، بل بقدرتك على النهوض من جديد.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Case 3 -->
-            <div class="case-card">
-                <button class="case-button" style="--btn-color-1: #ec4899; --btn-color-2: #be185d;" onclick="toggleCase(this)">
-                    🤝 الحالة الثالثة: قوة المجتمع
-                </button>
-                <div class="case-content">
-                    <p>
-                        🔹 <strong>المشكلة:</strong> رجل شعر بالوحدة والاكتئاب. انعزل عن الناس معتقداً أنه لا أحد يفهمه. ظل يعاني بمفرده في صمت.
-                    </p>
-                    <p>
-                        🔹 <strong>الحل:</strong> قرر أن ينضم لمجموعة روحية صغيرة. شارك أحزانه وآماله مع أشخاص يفهمون. وجد الدعم والفهم الذي كان يحتاجه. بدأ يشعر بالأمل من جديد.
-                    </p>
-                    <p>
-                        💡 <strong>الدرس:</strong> لا تحاول أن تحمل الحمل وحدك. الحياة أسهل عندما تشاركها مع أشخاص يدعمونك. البحث عن المجتمع ليس ضعفاً، بل قوة.
-                    </p>
-                </div>
+            <div
+                class="h-2 w-24 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full mx-auto mt-5">
             </div>
 
         </div>
 
-        <!-- Back Button -->
-       <div class="text-center mt-10">
-            <a href="index.html" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-3 rounded-2xl font-bold hover:scale-105 transition">
-               HOME  ← 
+        <!-- CASES -->
+        <div class="space-y-5">
+
+            <!-- CASE 1 -->
+            <div class="case-card">
+
+                <button class="case-button"
+                    style="--btn-color-1:#3b82f6; --btn-color-2:#2563eb;"
+                    onclick="toggleCase(this)">
+
+                    📖 الحالة الأولى : الحماس اللي اختفى
+
+                </button>
+
+                <div class="case-content">
+
+                    <p>
+                        🔹 انا واحد منكم داخل الخدمة متحمس جدًا للخدمة，
+                        وكنت عايز اعمل كل حاجة وأي حاجة...
+                        كنت بتعب جدًا في تحضير الدروس عشان الدرس يطلع قوي.
+                    </p>
+
+                    <p>
+                        🔹 كنت بقرب من الولاد عشان يحبوني，
+                        وكنت بشارك جامد في اجتماعات الخدمة，
+                        وأمين الخدمة كان بيقدرني جدًا وبيشكرني في كل مرة.
+                    </p>
+
+                    <p>
+                        🔹 كنت شاطر جدًا，
+                        بعرف اتكلم，
+                        وبحضر ألعاب،
+                        وبنظم خلوات،
+                        وبخدم في المهرجان الروحي والرياضي...
+                        تقريبًا ماكنتش سايب حاجة في الخدمة إلا لما عملتها.
+                    </p>
+
+                    <p>
+                        🔹 لكن بعد فترة...
+                        الحماسة بدأ تقل،
+                        ومبقاش عندي نفس الروح اللي بدأ بيها الخدمة،
+                        وبقيت اجي مرة في الشهر لو جه،
+                        وحتى المرة دي كانت تقيلة على قلبي.
+                    </p>
+
+                    <p>
+                        🔹 وفي مرة كنت قاعد مع أحد الآباء،
+                        وكانوا بيتكلموا عن الخدمة،
+                        فقاله:
+                    </p>
+
+                    <div class="quote-box">
+
+                        ✝️ "بص يا فلان...
+                        انت لما بدأت الخدمة كنت متحمس،
+                        وكنت بتشارك في خدمات كتيرة،
+                        وساعتها كان الكل مهتم بيك،
+                        وأمين الخدمة كان بيقدرك جدًا،
+                        والولاد كانوا متعلقين بيك...
+                        وده كان مفرحك جدًا.
+                        لكن بعد فترة،
+                        أول ما الاهتمام قل،
+                        أو مبقتش تلاقي نفس التقدير والشكر،
+                        أو لما خادم جديد جه وخد مكانتك...
+                        بقيت مش قادر تخدم بنفس القوة...
+                        تفتكر ليه؟"
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CASE 2 -->
+            <div class="case-card">
+
+                <button class="case-button"
+                    style="--btn-color-1:#9333ea; --btn-color-2:#6d28d9;"
+                    onclick="toggleCase(this)">
+
+                    😶‍🌫️ الحالة الثانية : الغيرة المقنعة
+
+                </button>
+
+                <div class="case-content">
+
+                    <p>
+                        🔹 كلارا، تاسوني بتخدم أسرة تانية إعدادي،
+                        وكانت أقدم حد في الأسرة.
+                        كانت محبوبة جدًا،
+                        شخصية هادئة،
+                        خدومة،
+                        وبتساعد الكل.
+                    </p>
+
+                    <p>
+                        🔹 بعد عيد النيروز،
+                        اتوزعت تاسوني ريتا على نفس الأسرة.
+                        ودي كانت مختلفة جدًا عن كلارا
+                        شخصية قوية，
+                        اجتماعية，
+                        وعندها أفكار جديدة ومختلفة.
+                    </p>
+
+                    <p>
+                        🔹 في البداية،
+                        كلارا فرحت بيها جدًا،
+                        وبدأت تساعدها في كل حاجة.
+                    </p>
+
+                    <p>
+                        🔹 لكن مع الوقت،
+                        بدأت تلاحظ إن الناس بقت تتكلم عن ريتا أكتر،
+                        وبدأت تسمع:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "ريتا أفكارها حلوة..." <br>
+                        "بتعرف تحتوي البنات..." <br>
+                        "شاطرة جدًا..."
+
+                    </div>
+
+                    <p>
+                        🔹 كلارا كانت من بره مبتسمة...
+                        لكن من جواها كان في صوت بيقول:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "بعد كل السنين دي...
+                        محدش شايفك!
+                        راحت عليكي..."
+
+                    </div>
+
+                    <p>
+                        🔹 بالتدريج بدأت  كلارا تتغير，
+                        بقت تفسر كلام ريتا غلط，
+                        تركز في أخطائها，
+                        وتفرح لما تغلط كمان.
+                    </p>
+
+                    <p>
+                        🔹 وفي مؤتمر خدمة،
+                        واحدة من التاسونات قالت:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "ربنا مدي نعمة لريتا بطريقة عجيبة."
+
+                    </div>
+
+                    <p>
+                        🔹 راحت كلارا ردت بسرعة:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "أصل البنات دلوقتي بيحبوا أي حد بيضحك ويهزر..."
+
+                    </div>
+
+                    <p>
+                        💡 الحالة دي بتوضح الغيرة،
+                        وعدم المحبة،
+                        والكبرياء،
+                        وعدم وضوح الهدف الحقيقي من الخدمة.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- CASE 3 -->
+            <div class="case-card">
+
+                <button class="case-button"
+                    style="--btn-color-1:#ec4899; --btn-color-2:#be185d;"
+                    onclick="toggleCase(this)">
+
+                    🚪 الحالة الثالثة : الافتقاد اللي اختفى
+
+                </button>
+
+                <div class="case-content">
+
+                    <p>
+                        🔹 أنا محب،
+                        خادم معاكم هنا في الكنيسة،
+                        وحابب أشارككم خبرتي في موضوع الافتقاد.
+                    </p>
+
+                    <p>
+                        🔹 أول ما دخلت الخدمة،
+                        كنت مقتنع إن الافتقاد عمود أساسي من عواميد الخدمة،
+                         وده اللي كنت سامعه من الآباء والكهنة فى اعداد خدمة.
+                    </p>
+
+                    <p>
+                        🔹 ظبطت نفسي،
+                        ورتبت العناوين，
+                        وقلت：
+                        يلا... دقت ساعة العمل.
+                    </p>
+
+                    <p>
+                        🔹 كلمت خادم جديد ينزل معايا，
+                        لكنه ماكنش مناسب معاه，
+                        فنزلت لوحدي،
+                        وقلت:
+                        "مش هعطل نفسي."
+                        "هنزل يعني هنزل."
+                    </p>
+
+                    <p>
+                        🔹 للأسف ضيعت وقت كبير في العناوين،
+                        ولما وصلت،
+                        اتكلمت بطريقة ضايقت الولد من غير ما أقصد،
+                        وحسيت إنه زعل مني.
+                    </p>
+
+                    <p>
+                        🔹 وبعد ما نزلت،
+                        اكتشفت إني نسيت أصلي،
+                        وماقريتش الإنجيل قبل النزول...
+                        لكن قلت:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "دي أول مرة...
+                        تتظبط المرة اللي بعدها."
+
+                    </div>
+
+                    <p>
+                        🔹 بعد أسبوع،
+                        نزلت تاني مع مايكل صاحبي،
+                        وبرضه ضيعنا وقت كبير في العناوين.
+                    </p>
+
+                    <p>
+                        🔹 ولما دخلنا بيت أندرو،
+                        مامته قالتلي:
+                    </p>
+
+                    <div class="quote-box">
+
+                        "لو أندرو مش عايز يروح التسبحة،
+                        ما تضغطش عليه...
+                        إحنا مش متعودين عليها."
+
+                    </div>
+
+                    <p>
+                        🔹 وقتها اتوترت جدًا،
+                        ومعرفتش أرد،
+                        وبرضه كنت ناسي الصلاة والإنجيل.
+                    </p>
+
+                    <p>
+                        🔹 ومن ساعتها بدأت أهمل الافتقاد،
+                        وبقالى 3 سنين معتمد على رسائل الواتساب بس.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HOME BUTTON -->
+        <div class="text-center mt-10">
+
+            <a href="index.html"
+                class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-4 rounded-2xl font-bold active:scale-95 transition">
+
+                ← HOME
+
             </a>
+
         </div>
+
     </div>
 
     <script>
+
         function toggleCase(button) {
+
             const content = button.nextElementSibling;
+
+            document.querySelectorAll('.case-content').forEach(item => {
+
+                if (item !== content) {
+                    item.classList.remove('active');
+                }
+
+            });
+
             content.classList.toggle('active');
-            
-            // Smooth scroll to content
+
             if (content.classList.contains('active')) {
+
                 setTimeout(() => {
-                    content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
+
+                    content.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                }, 150);
+
             }
+
         }
+
     </script>
 
 </body>
+
 </html>
