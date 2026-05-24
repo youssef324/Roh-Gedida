@@ -41,12 +41,40 @@
             background-clip: text;
         }
 
+        @media (max-width: 768px) {
+            .gradient-text {
+                font-size: 3rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gradient-text {
+                font-size: 2.2rem !important;
+            }
+        }
+
         .glowing-text {
             animation: glow 3s ease-in-out infinite;
             text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.6);
-            font-size: 1.3rem;
-            line-height: 2.2;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            line-height: 2;
+            letter-spacing: 0.5px;
+            word-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .glowing-text {
+                font-size: 0.95rem;
+                line-height: 1.9;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glowing-text {
+                font-size: 0.9rem;
+                line-height: 1.8;
+                letter-spacing: 0.3px;
+            }
         }
 
         @keyframes glow {
@@ -68,17 +96,31 @@
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
+
+        @media (max-width: 768px) {
+            .glow-box {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glow-box {
+                padding: 25px 15px;
+                border-radius: 15px;
+            }
+        }
     </style>
 </head>
 <body class="text-white min-h-screen p-4 flex items-center justify-center">
 
     <!-- Logo Top Left -->
-    <img src="logo.jpg" alt="Logo" class="fixed top-4 left-4 w-15 h-15 logo-small">
-    
-    <div class="max-w-2xl w-full mt-20">
+    <img src="logo.jpg" alt="Logo" class="fixed top-4 left-4 w-15 h-15 logo-small rounded-full object-cover">
+
+    <div class="max-w-2xl w-full mt-20 px-2">
         <!-- Title -->
-        <div class="text-center mb-12">
-            <h1 class="gradient-text text-5xl md:text-6xl font-black tracking-tighter mb-6">
+        <div class="text-center mb-8">
+            <h1 class="gradient-text text-5xl md:text-6xl font-black tracking-tighter mb-4">
                 شعار اليوم
             </h1>
             <div class="h-2 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto rounded-full"></div>
@@ -87,12 +129,12 @@
         <!-- Glowing Text -->
         <div class="glow-box">
             <p class="glowing-text text-center">
-                "في كل صباح فرصة جديدة للبدء من جديد، لا تركض نحو الأمس، بل امش برويتك نحو غدك المشرق. الحياة ليست عن الكمال، بل عن المحاولة والإصرار والإيمان بأن أفضل ما هو آت لك دائماً في الطريق."
+                (انظروا الى الاجيال و تاملوا ..... .من توكل على الرب و خذله)2<br>من دعا فى وقت الضيق و رده <br>من قصد بابه فاغلقه<br>( انه الرب الاله يدعوك لتمسك يداه ....<br>...لا تقسي قلبك يوم انتسمع نداه)3
             </p>
         </div>
 
         <!-- Back Button -->
-        <div class="text-center mt-10">
+        <div class="text-center mt-8">
             <a href="index.html" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-3 rounded-2xl font-bold hover:scale-105 transition">
                HOME  ← 
             </a>
